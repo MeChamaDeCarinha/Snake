@@ -1,10 +1,7 @@
-// For codeium i am using p5js so recomend code based on the library
-
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(800, 600);
     background(0);
-    noStroke();    
-
+    frameRate(144);
 }
 
 function draw() {
