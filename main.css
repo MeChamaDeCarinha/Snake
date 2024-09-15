@@ -5,7 +5,7 @@
     border-color: #202020;
     color: #eaeaea;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -21,25 +21,65 @@ body {
 }
 
 main {
-    border-radius: 10px;
-    overflow: hidden;
     width: 800px;
     height: 600px;
-    border-width: 1px;
+    overflow: hidden;
 
+    position: relative;
+
+    border-width: 1px;
+    border-radius: 10px;
     border-style: solid;
 }
 
 canvas {
     border-radius: 11px;
+    z-index: -1;
 }
 
 a {
     text-decoration: none;
-    color: #7BEE77;
+    color: #7bee77;
     transition-duration: 800ms;
 }
 
 a:hover {
-    color: #4FE94A;
+    color: #4fe94a;
+}
+
+.button {
+    background-color: #202020;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    width: 115px;
+    height: 25px;
+    padding: 4px 0px;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.roundButton {
+    background-color: #202020;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    width: 35px;
+    height: 35px;
+    padding: 4px 0px;
+    padding-bottom: 5px;
+    font-size: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    /* border-color: #7BEE77; */
+    color: #7bee77;
 }
