@@ -1,4 +1,4 @@
-const states = {
+const sidebarStates = {
     open: "open",
     opening: "opening",
     closed: "closed",
@@ -10,7 +10,7 @@ class Sidebar {
         this.pos = createVector(width - 200, -1)
         this.width = 200
         this.height = height
-        this.state = states.open
+        this.state = sidebarStates.open
 
         this.settingsButton = createButton("⚙")
         this.settingsButton.position(this.pos.x + this.width - 45, 10, "absolute")
@@ -23,32 +23,39 @@ class Sidebar {
         this.playButton.addClass("button")
 
         this.playButton.mousePressed(() => {
-            if (this.state === states.open) this.state = states.closing
-            if (this.state === states.closed) this.state = states.opening
+            if (this.state === sidebarStates.open && game.state !== gameStates.running) {
+                this.state = sidebarStates.closing
+                game.start()
+            }
+            if (this.state === sidebarStates.closed) this.state = sidebarStates.opening
         })
     }
 
     draw() {
+        push()
+
         fill("#121212")
         stroke("#202020")
-        rect(this.pos.x, this.pos.y, width, height + 1)
+        rect(this.pos.x, this.pos.y, this.width, this.height)
+
+        pop()
     }
 
     update() {
-        if (this.state === states.closing) {
+        if (this.state === sidebarStates.closing) {
             this.pos.x += 3
             this.settingsButton.position(this.settingsButton.x + 3, this.settingsButton.y)
             this.playButton.position(this.playButton.x + 3, this.playButton.y)
-            if (this.pos.x > width) {
-                this.state = states.closed
+            if (this.pos.x >= width) {
+                this.state = sidebarStates.closed
             }
         }
-        if (this.state === states.opening) {
+        if (this.state === sidebarStates.opening) {
             this.pos.x -= 3
             this.settingsButton.position(this.settingsButton.x - 3, this.settingsButton.y)
             this.playButton.position(this.playButton.x - 3, this.playButton.y)
-            if (this.pos.x < width - this.width) {
-                this.state = states.open
+            if (this.pos.x <= width - this.width) {
+                this.state = sidebarStates.open
             }
         }
     }

@@ -83,3 +83,8 @@ button:hover {
     /* border-color: #7BEE77; */
     color: #7bee77;
 }
+
+button:active {
+    /* no border */
+    border-style: none;         
+}
